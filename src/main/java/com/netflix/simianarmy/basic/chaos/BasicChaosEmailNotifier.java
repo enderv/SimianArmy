@@ -74,6 +74,8 @@ public class BasicChaosEmailNotifier extends ChaosEmailNotifier {
         }
         LOGGER.info("sending termination notification to global email address {}", to);
         buildAndSendEmail(to, group, instanceId, chaosType);
+        BasicChaosSlackNotifier slackNotifier = new BasicChaosSlackNotifier(cfg);
+        slackNotifier.sendSlackTerminationNotice(group, instanceId, chaosType);
     }
 
     /**
